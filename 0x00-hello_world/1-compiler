@@ -1,9 +1,18 @@
-	.file	"5-printf.c"
+	.file	"6-size.c"
 	.text
 	.section	.rodata
-	.align 8
 .LC0:
-	.string	"with proper grammer, but the outcome is a piece of art, "
+	.string	"Size of a char: %i byte(s)\n"
+.LC1:
+	.string	"Size of an int: %i byte(s)\n"
+	.align 8
+.LC2:
+	.string	"Size of a long int: %i byte(s)\n"
+	.align 8
+.LC3:
+	.string	"Size of long long int: %i byte(s)\n"
+.LC4:
+	.string	"Size of float: %i byte(s)\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -16,8 +25,26 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
+	movl	$1, %esi
 	leaq	.LC0(%rip), %rdi
-	call	puts@PLT
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$4, %esi
+	leaq	.LC1(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$8, %esi
+	leaq	.LC2(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$8, %esi
+	leaq	.LC3(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$4, %esi
+	leaq	.LC4(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
 	movl	$0, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8

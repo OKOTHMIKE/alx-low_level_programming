@@ -1,10 +1,10 @@
-# 1 "5-printf.c"
+# 1 "6-size.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 31 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 32 "<command-line>" 2
-# 1 "5-printf.c"
+# 1 "6-size.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -722,15 +722,20 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 873 "/usr/include/stdio.h" 3 4
 
-# 2 "5-printf.c" 2
+# 2 "6-size.c" 2
 
 
 
 
 
-# 6 "5-printf.c"
-int main(void)
+# 6 "6-size.c"
+main(void)
+ int main(void)
 {
- printf("with proper grammer, but the outcome is a piece of art, \n");
+ printf("Size of a char: %i byte(s)\n", sizeof(char));
+ printf("Size of an int: %i byte(s)\n", sizeof(int));
+ printf("Size of a long int: %i byte(s)\n", sizeof(long int));
+ printf("Size of long long int: %i byte(s)\n", sizeof(long long int));
+ printf("Size of float: %i byte(s)\n", sizeof(float));
  return (0);
 }
