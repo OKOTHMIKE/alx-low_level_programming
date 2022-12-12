@@ -1,10 +1,10 @@
-# 1 "0-positive_or_negative.c"
+# 1 "1-last_digit.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 31 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 32 "<command-line>" 2
-# 1 "0-positive_or_negative.c"
+# 1 "1-last_digit.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -722,7 +722,7 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 873 "/usr/include/stdio.h" 3 4
 
-# 2 "0-positive_or_negative.c" 2
+# 2 "1-last_digit.c" 2
 # 1 "/usr/include/stdlib.h" 1 3 4
 # 25 "/usr/include/stdlib.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -1815,7 +1815,7 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 1014 "/usr/include/stdlib.h" 2 3 4
 # 1023 "/usr/include/stdlib.h" 3 4
 
-# 3 "0-positive_or_negative.c" 2
+# 3 "1-last_digit.c" 2
 # 1 "/usr/include/time.h" 1 3 4
 # 29 "/usr/include/time.h" 3 4
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h" 1 3 4
@@ -2056,34 +2056,36 @@ extern int timespec_get (struct timespec *__ts, int __base)
      __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
 # 301 "/usr/include/time.h" 3 4
 
-# 4 "0-positive_or_negative.c" 2
+# 4 "1-last_digit.c" 2
 
 
 
 
 
-# 8 "0-positive_or_negative.c"
+# 8 "1-last_digit.c"
 int main(void)
 {
  int n;
+ int a;
 
  srand(time(0));
  n = rand() - 
-# 13 "0-positive_or_negative.c" 3 4
+# 14 "1-last_digit.c" 3 4
              2147483647 
-# 13 "0-positive_or_negative.c"
+# 14 "1-last_digit.c"
                       / 2;
- if (n > 0)
+ a = n % 10;
+ if (a > 5)
  {
-  printf("%d is positive\n", n);
+  printf("Last digit of % d is % d and is greater than 5\n", n, a);
  }
- else if (n == 0)
+ else if ( == 0)
  {
-  printf("%d is zero\n", n);
+  printf("Last digit of % d is % d and is 0\n", n, a);
  }
  else
  {
-  printf("%d is negative\n", n);
+  printf("Last digit of % d is % d and is less than 6 and not 0\n", n, a);
  }
  return (0);
 }

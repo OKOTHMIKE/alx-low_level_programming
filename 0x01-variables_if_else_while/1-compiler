@@ -1,12 +1,15 @@
-	.file	"0-positive_or_negative.c"
+	.file	"1-last_digit.c"
 	.text
 	.section	.rodata
+	.align 8
 .LC0:
-	.string	"%d is positive\n"
+	.string	"Last digit of % d is % d and is greater than 5\n"
+	.align 8
 .LC1:
-	.string	"%d is zero\n"
+	.string	"Last digit of % d is % d and is 0\n"
+	.align 8
 .LC2:
-	.string	"%d is negative\n"
+	.string	"Last digit of % d is % d and is less than 6 and not 0\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -26,10 +29,27 @@ main:
 	call	srand@PLT
 	call	rand@PLT
 	subl	$1073741823, %eax
+	movl	%eax, -8(%rbp)
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rax
+	imulq	$1717986919, %rax, %rax
+	shrq	$32, %rax
+	movl	%eax, %ecx
+	sarl	$2, %ecx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %eax
+	sall	$2, %eax
+	addl	%ecx, %eax
+	addl	%eax, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
 	movl	%eax, -4(%rbp)
-	cmpl	$0, -4(%rbp)
+	cmpl	$5, -4(%rbp)
 	jle	.L2
-	movl	-4(%rbp), %eax
+	movl	-4(%rbp), %edx
+	movl	-8(%rbp), %eax
 	movl	%eax, %esi
 	leaq	.LC0(%rip), %rdi
 	movl	$0, %eax
@@ -38,14 +58,16 @@ main:
 .L2:
 	cmpl	$0, -4(%rbp)
 	jne	.L4
-	movl	-4(%rbp), %eax
+	movl	-4(%rbp), %edx
+	movl	-8(%rbp), %eax
 	movl	%eax, %esi
 	leaq	.LC1(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 	jmp	.L3
 .L4:
-	movl	-4(%rbp), %eax
+	movl	-4(%rbp), %edx
+	movl	-8(%rbp), %eax
 	movl	%eax, %esi
 	leaq	.LC2(%rip), %rdi
 	movl	$0, %eax
