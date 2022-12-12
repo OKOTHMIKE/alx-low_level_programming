@@ -1,9 +1,9 @@
-	.file	"101-quote.c"
+	.file	"5-printf.c"
 	.text
 	.section	.rodata
 	.align 8
 .LC0:
-	.string	"and that piece of art is useful\"- Dora korpar, 2015-10-19\n"
+	.string	"with proper grammer, but the outcome is a piece of art, "
 	.text
 	.globl	main
 	.type	main, @function
@@ -16,11 +16,9 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	movl	$59, %edx
-	leaq	.LC0(%rip), %rsi
-	movl	$1, %edi
-	call	write@PLT
-	movl	$1, %eax
+	leaq	.LC0(%rip), %rdi
+	call	puts@PLT
+	movl	$0, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
