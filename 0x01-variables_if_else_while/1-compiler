@@ -1,4 +1,4 @@
-	.file	"7-print_tebahpla.c"
+	.file	"8-print_base16.c"
 	.text
 	.globl	main
 	.type	main, @function
@@ -12,18 +12,43 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	movb	$122, -1(%rbp)
+	movl	$0, -4(%rbp)
 	jmp	.L2
 .L3:
-	movsbl	-1(%rbp), %eax
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
+	imulq	$1717986919, %rax, %rax
+	shrq	$32, %rax
+	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
+	sall	$2, %eax
+	addl	%edx, %eax
+	addl	%eax, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	leal	48(%rdx), %eax
 	movl	%eax, %edi
 	call	putchar@PLT
-	movzbl	-1(%rbp), %eax
-	subl	$1, %eax
-	movb	%al, -1(%rbp)
+	addl	$1, -4(%rbp)
 .L2:
-	cmpb	$96, -1(%rbp)
-	jg	.L3
+	cmpl	$9, -4(%rbp)
+	jle	.L3
+	movb	$97, -5(%rbp)
+	jmp	.L4
+.L5:
+	movsbl	-5(%rbp), %eax
+	movl	%eax, %edi
+	call	putchar@PLT
+	movzbl	-5(%rbp), %eax
+	addl	$1, %eax
+	movb	%al, -5(%rbp)
+.L4:
+	cmpb	$102, -5(%rbp)
+	jle	.L5
 	movl	$10, %edi
 	call	putchar@PLT
 	movl	$0, %eax
