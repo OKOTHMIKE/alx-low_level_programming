@@ -1,7 +1,7 @@
 #include "main.h"
 /**
- * memset - fills  memory with a constant byte.
- * @s: source string
+ * _memset - fills  memory with a constant byte.
+ * @s: param to be allocated memory
  * @b: the constant byte for filling
  * @n: length of buffer
  * Return: new string.
@@ -10,7 +10,7 @@ char *_memset(char *s, char b, unsigned int n)
 {
 	unsigned int i = 0;
 
-	while (i < n >)
+	while (i < n)
 	{
 		*(s + i) = b;
 		i++;

@@ -4,7 +4,7 @@
  * _strstr - first occurance of the substring needle in the string haystack
  * @needle: searched in haystack
  * Return: return 0
- * */
+ **/
 
 char *_strstr(char *haystack, char *needle)
 {
@@ -16,7 +16,7 @@ char *_strstr(char *haystack, char *needle)
 		str2 = needle;
 
 		/*star WHILE*/
-		while (*haystack != '\0' && * haystack == * str2)
+		while (*haystack != '\0' && *haystack == *str2)
 		{
 			haystack++;
 			str++;

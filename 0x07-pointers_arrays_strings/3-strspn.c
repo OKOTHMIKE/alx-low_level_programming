@@ -4,7 +4,7 @@
  * @s: source string
  * @accept: searching string
  *
- * Retur: new string
+ * Return: new string
  */
 unsigned int _strspn(char *s, char *accept)
 {
@@ -20,7 +20,7 @@ unsigned int _strspn(char *s, char *accept)
 			if (*(accept + i) == '\0')
 			break;
 			}
-			return (j)
+			return (j);
 
 }
 
