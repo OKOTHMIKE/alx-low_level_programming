@@ -2,6 +2,7 @@
 
 /**
  * _strstr - first occurance of the substring needle in the string haystack
+ * @haystack: place of occurance
  * @needle: searched in haystack
  * Return: return 0
  **/
